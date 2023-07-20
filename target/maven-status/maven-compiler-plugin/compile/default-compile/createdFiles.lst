@@ -1,0 +1,14 @@
+com\oauth\implementation\model\Role.class
+com\oauth\implementation\model\User.class
+com\oauth\implementation\dao\UserRepository.class
+com\oauth\implementation\OauthLoginRegisterApplication.class
+com\oauth\implementation\service\DefaultUserService.class
+com\oauth\implementation\service\DefaultUserServiceImpl.class
+com\oauth\implementation\dto\UserLoginDTO.class
+com\oauth\implementation\controller\DashboardController.class
+com\oauth\implementation\dto\UserRegisteredDTO.class
+com\oauth\implementation\controller\RegistrationController.class
+com\oauth\implementation\config\CustomSuccessHandler.class
+com\oauth\implementation\controller\LoginController.class
+com\oauth\implementation\dao\RoleRepository.class
+com\oauth\implementation\config\SpringSecurityConfig.class
