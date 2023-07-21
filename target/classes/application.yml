@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webs
+    username: postgres
+    password: l8n3_a7-c2.E
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 761567995259-br4rpp47cevcvhmpg6fcrevmgk480g7s.apps.googleusercontent.com
+            client-secret: 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
+          github:
+            client-id: Iv1.04049dba6b1c2749
+            client-secret: c3d76bd7469d73ccd9b871380993ea302d4e960b
+  main:
+    allow-circular-references: false
+
