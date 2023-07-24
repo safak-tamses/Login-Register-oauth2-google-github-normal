@@ -24,30 +24,28 @@ import org.springframework.security.core.GrantedAuthority;
 @Setter
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	private String name;
-	
-	private String email;
-	
-	private String password;
-	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "cust_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
-	Set<Role> roles = new HashSet<Role>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	public Set<Role> getRole() {
-		return roles;
-	}
+    private String name;
 
-	public void setRole(Role role) {
-		this.roles.add(role);
-	}
+    private String email;
 
+    private String password;
 
-	
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "cust_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    Set<Role> roles = new HashSet<Role>();
+
+    public Set<Role> getRole() {
+        return roles;
+    }
+
+    public void setRole(Role role) {
+        this.roles.add(role);
+    }
+
 
 }

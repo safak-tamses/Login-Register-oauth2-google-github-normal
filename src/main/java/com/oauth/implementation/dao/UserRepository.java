@@ -7,7 +7,7 @@ import com.oauth.implementation.model.User;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-	User findByEmail(String emailId);
+    User findByEmail(String emailId);
 }

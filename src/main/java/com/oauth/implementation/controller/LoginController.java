@@ -17,30 +17,29 @@ import com.oauth.implementation.model.User;
 import com.oauth.implementation.service.DefaultUserService;
 
 
-
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	@Autowired
-	private DefaultUserService userService;
-	
-	@Autowired
-	UserRepository userRepo;
-    
+    @Autowired
+    private DefaultUserService userService;
+
+    @Autowired
+    UserRepository userRepo;
+
     @ModelAttribute("user")
     public UserLoginDTO userLoginDTO() {
         return new UserLoginDTO();
     }
-    
-	@GetMapping
-	public String login() {
-		return "login";
-	}
-	
-	@PostMapping
-	public void loginUser(@ModelAttribute("user") UserLoginDTO userLoginDTO) {
-		System.out.println("UserDTO"+userLoginDTO);
-		 userService.loadUserByUsername(userLoginDTO.getUsername());
-	}
-	
+
+    @GetMapping
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping
+    public void loginUser(@ModelAttribute("user") UserLoginDTO userLoginDTO) {
+        System.out.println("UserDTO" + userLoginDTO);
+        userService.loadUserByUsername(userLoginDTO.getUsername());
+    }
+
 }

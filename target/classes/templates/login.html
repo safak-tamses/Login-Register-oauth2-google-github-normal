@@ -3,94 +3,126 @@
 <head>
     <meta charset="ISO-8859-1">
 
-<link rel="stylesheet"
- href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <style>
     .navbar {
         background-color: cadetblue;
     }
+    .css-input {
+        padding: 7px;
+        font-size: 23px;
+        border-width: 1px;
+        border-color: #260a0a;
+        background-color: #350b0b;
+        color: #000000;
+        border-style: inset;
+        border-radius: 6px;
+        box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+        text-shadow: 0px 0px 5px rgba(207,97,97,.75);
+    }
+    .css-input:focus {
+        outline:none;
+    }
+    .btn {
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        color: #000000;
+        font-size: 20px;
+        background: #ffffff;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
 
 </style>
 
-<body >
+<body style="background-color: dimgray">
 
-    <!-- create navigation bar ( header) -->
-    <nav class="bg-secondary.bg-gradient navbar-inverse navbar-fixed-top" style="color: white" >
-        <div class="container" >
-            <h1>Oauth2.0 example. Created by safak.tamses</h1>
-        </div>
-    </nav>
-
-
-
-
-
-    <br><br><br><br><br><br><br>
+<!-- create navigation bar ( header) -->
+<nav class="navbar-inverse navbar-fixed-top " style="color: white; background-color: slategrey"; >
     <div class="container">
+        <h1>Oauth2.0 example. Created by safak.tamses</h1>
+    </div>
+</nav>
 
 
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" >
+<br><br><br><br><br><br><br>
+<div class="container" style="font-family: Courier New">
 
-             <div th:if="${param.error}">
-                  <div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
+            </div>
+
+            <h1>Login</h1>
+
+
+            <form th:action="@{/login}" method="post"
+                  th:object="${user}">
+
+
+                <div class="form-group">
+                    <label class="control-label" for="email" style="font-size: larger"> Email </label>
+                    <input id="email" class="form-control" style="height: 44px"
+                           th:field="*{username}" required autofocus="autofocus"
+                />
                 </div>
 
-                <h1>Login</h1>
 
+                <div class="form-group">
+                    <label class="control-label" for="password" style="font-size: larger"> Password </label>
+                    <input id="password" class="form-control" type="password" style="height: 44px"
+                                                 th:field="*{password}" required
+                                                 autofocus="autofocus"/>
+                </div>
 
-                <form th:action="@{/login}" method="post"
-                             th:object="${user}">
-
-
-
-                    <div class="form-group">
-                        <label class="control-label" for="email"> Email
-                         </label> <input id="email" class="form-control"
-                            th:field="*{username}" required autofocus="autofocus"
-                                />
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label class="control-label" for="password">
-                           Password </label> <input id="password"
-                            class="form-control" type="password"
-                          th:field="*{password}" required
-                            autofocus="autofocus" />
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" style="margin-right: 40px">
-                          Log In </button>
-                        <span>New User? <a href="/"
-                  th:href="@{/registration}">Register
+                <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <button type="submit" class="btn btn-primary btn" style="width: 40%; ">
+                        Log In
+                    </button>
+                    <span style="font-size: larger;">New User? <a href="/"
+                                       th:href="@{/registration}">Register
                                 here</a></span>
-                    </div>
-                </form>
-                <div>
-                    <h2><a th:href="@{/oauth2/authorization/google}">
-                        <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #e61942;" type="submit">
-                            <i class="fa-brands fa-google fa-lg " style="color: #e61942; margin-right: 20px;"></i>
-                            Sign in with google
-                        </button>
-                    </a></h2>
                 </div>
+            </form>
+            <div>
+                <h2><a th:href="@{/oauth2/authorization/google}">
+                    <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #e61942;"
+                            type="submit">
+                        <i class="fa-brands fa-google fa-lg " style="color: #e61942; margin-right: 20px;"></i>
+                        Sign in with google
+                    </button>
+                </a></h2>
+            </div>
 
-                <div>
-                    <h2><a th:href="@{/oauth2/authorization/github}">
-                        <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #484444;" type="submit">
-                            <i class="fa-brands fa-github fa-lg " style="color: #484444; margin-right: 20px;"></i>
-                            Sign in with github
-                        </button>
-                    </a></h2>
-                </div>
+            <div>
+                <h2><a th:href="@{/oauth2/authorization/github}">
+                    <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #484444;"
+                            type="submit">
+                        <i class="fa-brands fa-github fa-lg " style="color: #484444; margin-right: 20px;"></i>
+                        Sign in with github
+                    </button>
+                </a></h2>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

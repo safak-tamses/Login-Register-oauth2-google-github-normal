@@ -6,8 +6,8 @@ import com.oauth.implementation.dto.UserRegisteredDTO;
 import com.oauth.implementation.model.User;
 
 
-public interface DefaultUserService extends UserDetailsService{
+public interface DefaultUserService extends UserDetailsService {
 
-	User save(UserRegisteredDTO userRegisteredDTO);
-	
+    User save(UserRegisteredDTO userRegisteredDTO);
+
 }

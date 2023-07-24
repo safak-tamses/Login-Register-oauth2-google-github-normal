@@ -8,7 +8,7 @@ import com.oauth.implementation.model.Role;
 
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer> {
 
-	Role findByRole(String name);
+    Role findByRole(String name);
 }
