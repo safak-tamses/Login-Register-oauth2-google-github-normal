@@ -5,6 +5,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,6 +28,9 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 	
    @Autowired
   	private RoleRepository roleRepo;
+
+
+   private JavaMailSender javaMailSender;
   	
    
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -39,6 +44,13 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 		if(user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
+		SimpleMailMessage mail = new SimpleMailMessage();
+		System.out.println(user.getEmail());
+		mail.setTo(user.getEmail());
+		mail.setSubject("Kayıt başarılı hoşgeldiniz");
+		mail.setText("Merhaba " + user.getName()  + " web sitemize hoşgeldin :)");
+
+		javaMailSender.send(mail);
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRole()));		
 	}
 	
@@ -55,6 +67,11 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 		user.setName(userRegisteredDTO.getName());
 		user.setPassword(passwordEncoder.encode(userRegisteredDTO.getPassword()));
 		user.setRole(role);
+
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(userRegisteredDTO.getEmail_id());
+		mail.setSubject("Kayıt başarılı hoşgeldiniz");
+		mail.setText("Merhaba " + userRegisteredDTO.getName() + " web sitemize hoşgeldin :)");
 		
 		return userRepo.save(user);
 	}
