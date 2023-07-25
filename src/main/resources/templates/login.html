@@ -1,97 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
-
-  <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="ISO-8859-1">
+    
+<link rel="stylesheet" 
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <style>
-  .navbar {
-    background-color: cadetblue;
-  }
-
+    .navbar {
+        background-color: cadetblue;
+    }
+ 
 </style>
 
 <body >
 
-<!-- create navigation bar ( header) -->
-<nav class="bg-secondary.bg-gradient navbar-inverse navbar-fixed-top" style="color: white" >
-  <div class="container" >
-    <h1>Oauth2.0 example. Created by safak.tamses</h1>
-  </div>
-</nav>
-
-
-
-
-
-<br><br><br><br><br><br><br>
-<div class="container">
-
-
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4" >
-
-      <div th:if="${param.error}">
-        <div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
-      </div>
-
-      <h1>Login</h1>
-
-
-      <form th:action="@{/login}" method="post"
-            th:object="${user}">
-
-
-
-        <div class="form-group">
-          <label class="control-label" for="email"> Email
-          </label> <input id="email" class="form-control"
-                          th:field="*{username}" required autofocus="autofocus"
-        />
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <h1>Oauth2.0</h1>
         </div>
+    </nav>
+ 
+    
+    
+    
 
+    <br><br><br><br><br><br><br>
+    <div class="container">
+    
+    
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
 
+             <div th:if="${param.error}">
+                  <div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
+                </div>
 
-        <div class="form-group">
-          <label class="control-label" for="password">
-            Password </label> <input id="password"
-                                     class="form-control" type="password"
-                                     th:field="*{password}" required
-                                     autofocus="autofocus" />
-        </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary" style="margin-right: 40px">
-            Log In </button>
-          <span>New User? <a href="/"
-                             th:href="@{/registration}">Register
-                                here</a></span>
-        </div>
-      </form>
-      <div>
-        <h2><a th:href="@{/oauth2/authorization/google}">
-          <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #e61942;" type="submit">
-            <i class="fa-brands fa-google fa-lg " style="color: #e61942; margin-right: 20px;"></i>
-            Sign in with google
-          </button>
-        </a></h2>
-      </div>
-
-      <div>
-        <h2><a th:href="@{/oauth2/authorization/github}">
-          <button class="btn btn-lg btn-block btn-primary" style="background-color: #ffffff; color: #484444;" type="submit">
-            <i class="fa-brands fa-github fa-lg " style="color: #484444; margin-right: 20px;"></i>
-            Sign in with github
-          </button>
-        </a></h2>
-      </div>
-    </div>
-  </div>
+                <h1>Login</h1>
+                
+                <div>
+    <h2><a th:href="@{/oauth2/authorization/google}">Login with Google</a></h2>   
 </div>
 
+          <div>
+    <h2><a th:href="@{/oauth2/authorization/github}">Login with GitHub</a></h2>   
+</div>
+                <form th:action="@{/login}" method="post" 
+                             th:object="${user}">
+                   
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="email"> Email 
+                         </label> <input id="email" class="form-control"
+                            th:field="*{username}" required autofocus="autofocus" 
+                                />
+                    </div>
+                    
+                   
+
+                    <div class="form-group">
+                        <label class="control-label" for="password"> 
+                           Password </label> <input id="password"
+                            class="form-control" type="password" 
+                          th:field="*{password}" required
+                            autofocus="autofocus" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                          Log In </button>
+                        <span>New User? <a href="/" 
+                  th:href="@{/registration}">Register
+                                here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       
 </body>
 </html>
-<script src="https://kit.fontawesome.com/76b622f79a.js" crossorigin="anonymous"></script>

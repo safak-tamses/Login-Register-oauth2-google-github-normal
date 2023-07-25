@@ -14,14 +14,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "user")
-@Getter
-@Setter
 public class User {
 
 	@Id
@@ -39,6 +35,14 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
 	Set<Role> roles = new HashSet<Role>();
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Set<Role> getRole() {
 		return roles;
 	}
@@ -47,7 +51,28 @@ public class User {
 		this.roles.add(role);
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}	
 }

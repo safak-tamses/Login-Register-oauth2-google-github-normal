@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.oauth.implementation.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ public class MailConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("testmailsender31@gmail.com");
-        mailSender.setPassword("bgwwqjbydllqwemz");
+        mailSender.setPassword("xwnqsypuwtezhphw");
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");

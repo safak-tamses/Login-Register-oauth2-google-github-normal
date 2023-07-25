@@ -1,16 +1,39 @@
 package com.oauth.implementation.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class UserLoginDTO {
+	
+private String username;
+	
+	private String password;
+	
+	private int otp;
 
-    private String username;
+	
+	public String getUsername() {
+		return username;
+	}
 
-    private String password;
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    private int otp;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getOtp() {
+		return otp;
+	}
+
+	public void setOtp(int otp) {
+		this.otp = otp;
+	}
+	
+	
+	
 
 }

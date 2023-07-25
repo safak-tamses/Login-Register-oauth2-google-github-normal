@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/webs
@@ -21,5 +23,3 @@ spring:
           github:
             client-id: Iv1.04049dba6b1c2749
             client-secret: c3d76bd7469d73ccd9b871380993ea302d4e960b
-
-
